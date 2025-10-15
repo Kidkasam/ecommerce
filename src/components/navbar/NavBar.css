@@ -1,33 +1,32 @@
-/* 🔹 Navbar container */
-.container {
+
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 14px 30px;
-  background: #0a0f1f; /* deep navy background */
+  background: #0a0f1f;
   color: #fff;
-  position: relative;
-  z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 999;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* 🔹 Logo */
+
 .logo {
   font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: 1px;
-  color: #4fa3ff; /* accent blue */
+  color: #4fa3ff;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* 🔹 Desktop nav links */
+
 .nav {
   display: flex;
-  align-items: center;
   gap: 30px;
 }
 
-/* 🔹 Link styles */
 .nav a {
   position: relative;
   color: #e0e0e0;
@@ -35,18 +34,16 @@
   font-weight: 500;
   font-size: 1rem;
   transition: color 0.3s ease;
-  padding-bottom: 3px;
 }
 
-/* 🔹 Hover underline animation */
 .nav a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -4px;
   height: 2px;
   width: 0%;
-  background-color: #4fa3ff; /* accent blue underline */
+  background-color: #4fa3ff;
   transition: width 0.3s ease;
 }
 
@@ -55,10 +52,10 @@
 }
 
 .nav a:hover {
-  color: #4fa3ff; /* bright blue on hover */
+  color: #4fa3ff;
 }
 
-/* 🔹 Burger icon */
+
 .burger-icon {
   color: #fff;
   font-size: 1.8rem;
@@ -66,29 +63,25 @@
   display: none;
 }
 
-/* 🔹 Mobile nav (hidden by default) */
 .mobile-nav {
-  display: none;
+  display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 60px;
-  left: -100%;
-  background: #0a0f1f;
-  width: 100%;
-  padding: 25px 0;
-  text-align: center;
-  transition: left 0.3s ease;
+  align-items: center;
   gap: 18px;
+  position: absolute;
+  top: 65px;
+  left: -100%;
+  width: 100%;
+  background: #0a0f1f;
+  padding: 25px 0;
+  transition: left 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* 🔹 When open — slide in */
 .mobile-nav.open {
   left: 0;
-  display: flex;
 }
 
-/* 🔹 Mobile nav links */
 .mobile-nav a {
   color: #e0e0e0;
   text-decoration: none;
@@ -100,7 +93,7 @@
   color: #4fa3ff;
 }
 
-/* 🔹 RESPONSIVE */
+
 @media (max-width: 768px) {
   .nav {
     display: none;
