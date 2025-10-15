@@ -1,0 +1,112 @@
+/* 🔹 Navbar container */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 30px;
+  background: #0a0f1f; /* deep navy background */
+  color: #fff;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* 🔹 Logo */
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #4fa3ff; /* accent blue */
+  text-transform: uppercase;
+}
+
+/* 🔹 Desktop nav links */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* 🔹 Link styles */
+.nav a {
+  position: relative;
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  padding-bottom: 3px;
+}
+
+/* 🔹 Hover underline animation */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #4fa3ff; /* accent blue underline */
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.nav a:hover {
+  color: #4fa3ff; /* bright blue on hover */
+}
+
+/* 🔹 Burger icon */
+.burger-icon {
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* 🔹 Mobile nav (hidden by default) */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: -100%;
+  background: #0a0f1f;
+  width: 100%;
+  padding: 25px 0;
+  text-align: center;
+  transition: left 0.3s ease;
+  gap: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* 🔹 When open — slide in */
+.mobile-nav.open {
+  left: 0;
+  display: flex;
+}
+
+/* 🔹 Mobile nav links */
+.mobile-nav a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.mobile-nav a:hover {
+  color: #4fa3ff;
+}
+
+/* 🔹 RESPONSIVE */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .burger-icon {
+    display: block;
+  }
+}
