@@ -1,5 +1,6 @@
 import React from 'react';
 import './products.css';
+import { FaShoppingCart } from 'react-icons/fa';
 import p1 from '../../assets/img/products/f1.jpg';
 import p2 from '../../assets/img/products/f2.jpg';
 import p3 from '../../assets/img/products/f3.jpg';
@@ -13,15 +14,15 @@ import n1 from '../../assets/img/products/n1.jpg';
 
 const Products = () => {
   const product_slide = [
-    { title: "70% off", img: p1 },
-    { title: "70% off", img: p2 },
-    { title: "70% off", img: p3 },
-    { title: "70% off", img: p4 },
-    { title: "70% off", img: p5 },
-    { title: "70% off", img: p6 },
-    { title: "70% off", img: p7 },
-    { title: "70% off", img: p8 },
-    { title: "70% off", img: n1 }
+    { title: "shirt", img: p1 },
+    { title: "shirt", img: p2 },
+    { title: "shirt", img: p3 },
+    { title: "shirt", img: p4 },
+    { title: "shirt", img: p5 },
+    { title: "shirt", img: p6 },
+    { title: "shirt", img: p7 },
+    { title: "shirt", img: p8 },
+    { title: "shirt", img: n1 }
   ];
 
   return (
@@ -34,7 +35,12 @@ const Products = () => {
               <img src={pro.img} alt={pro.title} />
               <div className="pro-info">
                 <h3>{pro.title}</h3>
+                <p className="price">$49.99</p>
+                <button className="add-btn">
+                  <FaShoppingCart />
+                </button>
               </div>
+
             </div>
           ))}
         </div>
@@ -48,6 +54,10 @@ const Products = () => {
               <img src={pro.img} alt={pro.title} />
               <div className="pro-info">
                 <h3>{pro.title}</h3>
+                <p className="price">$49.99</p>
+                <button className="add-btn">
+                  <FaShoppingCart />
+                </button>
               </div>
             </div>
           ))}
@@ -62,6 +72,10 @@ const Products = () => {
               <img src={pro.img} alt={pro.title} />
               <div className="pro-info">
                 <h3>{pro.title}</h3>
+                <p className="price">$49.99</p>
+                <button className="add-btn">
+                  <FaShoppingCart />
+                </button>
               </div>
             </div>
           ))}
