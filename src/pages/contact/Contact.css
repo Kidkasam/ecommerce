@@ -26,7 +26,7 @@
   margin: 0 auto;
 }
 
-/* 🔹 Contact Info Section */
+
 .contact-info {
   display: flex;
   flex-direction: column;
@@ -46,7 +46,6 @@
   font-size: 1.3rem;
 }
 
-/* 🔹 Contact Form */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -85,7 +84,6 @@
   background: #1e90ff;
 }
 
-/* 🔹 Responsive */
 @media (max-width: 768px) {
   .contact-content {
     grid-template-columns: 1fr;
