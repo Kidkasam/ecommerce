@@ -1,4 +1,4 @@
-/* Hero Slider */
+
 .hero {
   position: relative;
   width: 100%;
@@ -54,7 +54,7 @@
   background-color: #1e90ff;
 }
 
-/* Arrows */
+
 .arrow {
   position: absolute;
   top: 50%;
@@ -71,7 +71,7 @@
 .arrow.prev { left: 20px; }
 .arrow.next { right: 20px; }
 
-/* Banner Section */
+
 .banners img {
   width: 100%;
   height: auto;
@@ -79,7 +79,7 @@
   margin-top: 30px;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .overlay h1 {
     font-size: 2rem;
