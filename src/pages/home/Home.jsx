@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,  } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Hero1 from '../../assets/img/hero4.png';
 import Banner from '../../assets/img/banner/b1.jpg';
@@ -30,6 +31,7 @@ const slides = [
 
 const Home = () => {
   const [index, setIndex] = useState(0);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const timer = setInterval(() => {
