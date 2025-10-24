@@ -8,17 +8,15 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="footer-section-about">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
-          Sequi repudiandae obcaecati deserunt modi dolorem architecto <br/>
-          doloribus, rem nemo velit quam, commodi impedit quos quod <br/>
-          consequuntur accusantium temporibus? Ex, aut architecto?<br/>
+         © 2025 KFits. All rights reserved.<br/>
+Quality apparel and accessories delivered to your doorstep.
         </p>
       </div>
 
       <div className="footer-section-links">
         <Link to="/">Home</Link>
         <Link to="/products">Products</Link>
-        <Link to="/about">About Us</Link>
+        
         <Link to="/cart">Cart</Link>
         <Link to="/contact">Contact</Link>
       </div>
