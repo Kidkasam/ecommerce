@@ -1,81 +1,226 @@
-.container{
-    width: 100%;
-
-    text-align: center;
-    padding: 60px 0;
-   
-    color: #111;
-    
-}
-.container h2{
-    font-size: 40px;
-    margin-bottom: 30px;
-    color: #222;
+.catalog-wrapper {
+  padding-top: 2rem;
+  background-color: #fcfcfc;
 }
 
-.products-grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-    gap: 20px;
-    justify-items: center;
+.catalog-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
 }
-.pro-card {
-  width: 100%;
-  max-width: 300px;
-  overflow: hidden;
+
+.title-section h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.title-section p {
+  color: #666;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  background: white;
   cursor: pointer;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: 0.3s;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-.pro-card img {
+.filter-btn.active,
+.filter-btn:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* Products Grid */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+.pro-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.pro-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.img-container {
+  position: relative;
+  display: block;
+  height: 350px;
+  overflow: hidden;
+}
+
+.img-container img {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.pro-card:hover .img-container img {
+  transform: scale(1.05);
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card-overlay span {
+  background: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.pro-card:hover .card-overlay {
+  opacity: 1;
 }
 
 .pro-info {
-  padding: 10px;
-  text-align: center;
-  background: #fff;
+  padding: 1.5rem;
+}
+
+.pro-category {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .pro-info h3 {
-  margin-bottom: 5px;
-  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
-.pro-info .price {
-  color: #007bff;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-.banner {
-  width: 100%;
-  margin-top: 20px;
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.banner img {
-  width: 100%;
-  height: 40vh;
-  display: block;
+.price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000;
 }
-
 
 .add-btn {
-  background: #000;
-  color: #fff;
+  background: #f5f5f5;
   border: none;
-  padding: 8px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s;
 }
 
 .add-btn:hover {
-  background: #007bff;
-  transform: scale(1.1);
+  background: #000;
+  color: #fff;
+}
+
+/* Empty State */
+.no-results {
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.no-results h3 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.reset-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* Banner Section */
+.product-banner {
+  position: relative;
+  height: 400px;
+  margin-top: 2rem;
+}
+
+.product-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: white;
+}
+
+.banner-overlay h3 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .catalog-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .filter-bar {
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 0.5rem;
+  }
 }
