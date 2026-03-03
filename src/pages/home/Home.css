@@ -1,100 +1,146 @@
-.hero {
+.home-page {
+  overflow-x: hidden;
+}
+
+.hero-slider {
   position: relative;
+  height: 90vh;
   width: 100%;
-  height: 80vh;
-  overflow: hidden;
+  background: #000;
 }
 
-.hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.overlay {
+.slide {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+.hero-overlay {
+  position: absolute;
+  z-index: 10;
   text-align: center;
-  color: #fff;
-  padding: 0 40px; /* increased horizontal padding */
-  box-sizing: border-box;
+  color: white;
+  max-width: 800px;
+  padding: 2rem;
 }
 
-.overlay h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
+.hero-overlay h1 {
+  font-size: 5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1;
 }
 
-.overlay p {
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-  max-width: 600px; /* prevent text from stretching too wide */
+.hero-overlay p {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
 }
 
-.cta-btn {
-  background-color: #4fa3ff;
-  color: #fff;
-  padding: 14px 36px; /* slightly bigger for balance */
-  font-size: 1rem;
+.hero-cta {
+  padding: 1.2rem 3rem;
+  background: white;
+  color: black;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: transform 0.3s, background 0.3s;
 }
 
-.cta-btn:hover {
-  background-color: #1e90ff;
+.hero-cta:hover {
+  transform: scale(1.05);
+  background: #f0f0f0;
 }
 
-.arrow {
+.slider-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 12px; 
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  backdrop-filter: blur(5px);
 }
 
-.arrow.prev { left: 25px; }
-.arrow.next { right: 25px; }
+.slider-arrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
 
-.banners img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-top: 40px; 
+.slider-arrow.prev {
+  left: 2rem;
+}
+
+.slider-arrow.next {
+  right: 2rem;
+}
+
+/* Features Section */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 20px;
+  transition: transform 0.3s;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.feature-item p {
+  color: #666;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
-  .overlay {
-    padding: 0 20px;
+  .hero-overlay h1 {
+    font-size: 3rem;
   }
-  .overlay h1 {
-    font-size: 2rem;
+
+  .hero-overlay p {
+    font-size: 1.1rem;
   }
-  .overlay p {
-    font-size: 1rem;
-    max-width: 90%; 
-  }
-  .arrow {
-    font-size: 1.5rem;
-    padding: 10px;
-  }
-  .cta-btn {
-    padding: 12px 24px;
-    font-size: 0.95rem;
+
+  .slider-arrow {
+    display: none;
   }
 }
