@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="footer-col about">
           <h2 className="footer-logo">KFITS<span>.</span></h2>
           <p>
-            Experience the pinnacle of menswear. Our curated collection brings together precision tailoring and sustainable craftsmanship for the modern world.
+            Experience the pinnacle of our product. Our curated collection brings together precision tailoring and sustainable craftsmanship for the modern world.
           </p>
           <div className="social-links">
             <a href="#" aria-label="Facebook"><FaFacebook /></a>
