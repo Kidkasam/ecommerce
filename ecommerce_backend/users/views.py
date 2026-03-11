@@ -32,3 +32,19 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
+
+class VerifyOtpView(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        otp = request.data.get('otp')
+        try:
+            user = User.objects.get(email=email)
+            if user.otp == otp and user.is_otp_valid():
+                user.is_verified = True
+                user.otp = None
+                user.save()
+                return Response({"message": "Account verified successfully!"})
+            else:
+                return Response({"error": "Invalid or expired OTP"}, status=400)
+        except User.DoesNotExist:
+            return Response({"error": "User not found"}, status=404)

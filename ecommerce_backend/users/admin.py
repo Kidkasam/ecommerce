@@ -2,6 +2,10 @@ from django.contrib import admin
 from .models import User
 from django.contrib.auth.admin import UserAdmin
 
-admin.site.register(User, UserAdmin)
+class CustomUserAdmin(UserAdmin):
+    list_display = ('email', 'first_name', 'last_name', 'phone_number', 'is_staff')
+    fieldsets = UserAdmin.fieldsets + (
+        (None, {'fields': ('phone_number',)}),
+    )
 
-# Register your models here.
+admin.site.register(User, CustomUserAdmin)

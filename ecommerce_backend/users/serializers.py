@@ -1,5 +1,8 @@
+import random
 from rest_framework import serializers
 from .models import User
+from datetime import timedelta
+from django.utils import timezone
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,7 +15,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['phone_number', 'email', 'first_name', 'last_name', 'password', 'password_confirm']
+        fields = ['first_name', 'last_name', 'email', 'phone_number', 'password', 'password_confirm']
 
     def validate(self, data):
         if data['password'] != data['password_confirm']:
@@ -21,10 +24,15 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data.pop('password_confirm')
-        # Since username is required by AbstractUser but not in fields, 
-        # we'll use email as username if not provided.
         if 'username' not in validated_data:
             validated_data['username'] = validated_data['email']
         user = User.objects.create_user(**validated_data)
+        
+        # Generate OTP
+        user.otp = str(random.randint(100000, 999999))
+        user.otp_expiry = timezone.now() + timedelta(minutes=5)
+        user.save()
+
+        print(f"--- OTP FOR {user.email}: {user.otp} ---")
         return user
 
