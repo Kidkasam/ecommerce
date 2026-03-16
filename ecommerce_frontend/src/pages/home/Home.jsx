@@ -11,7 +11,7 @@ import './Home.css';
 const slides = [
   {
     title: "New Season Arrivals",
-    subtitle: "Discover the latest trends in premium menswear. Up to 70% Off for a limited time.",
+    subtitle: "Discover the latest trends in premium menswear. Up to 80% Off for a limited time.",
     img: Hero1,
     btnText: "Shop Collection",
   },
