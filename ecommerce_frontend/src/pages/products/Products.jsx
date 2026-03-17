@@ -147,7 +147,7 @@ const Products = () => {
         <img src={Banner2} alt="Offer Banner" />
         <div className="banner-overlay">
           <h3>Summer Collection</h3>
-          <p>Up to 50% Off on Selected Items</p>
+          <p>Up to 60% Off on Selected Items</p>
         </div>
       </div>
 
