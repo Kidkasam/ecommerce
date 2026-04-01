@@ -1,8 +1,9 @@
 import random
-from rest_framework import serializers
+from rest_framework import serializers, exceptions
 from .models import User
 from datetime import timedelta
 from django.utils import timezone
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -36,3 +37,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         print(f"--- OTP FOR {user.email}: {user.otp} ---")
         return user
 
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs ):
+        data = super().validate(attrs)
+
+        if not self.user.is_verified:
+            raise exceptions.AuthenticationFailed("user isn't verfied")
+        return data
