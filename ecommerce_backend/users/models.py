@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 
 class User(AbstractUser):
-    # Making these mandatory for consistent data
+    
     email = models.EmailField(unique=True, max_length=255, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
     first_name = models.CharField(max_length=100, blank=False)
