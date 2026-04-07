@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { FaShoppingCart, FaSearch, FaFilter } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../../context/CartContext";
+import api from "../../api";
 import "./products.css";
 
 import p1 from "../../assets/img/products/f1.jpg";
@@ -18,30 +19,58 @@ import Banner2 from "../../assets/img/banner/b2.jpg";
 import Banner10 from "../../assets/img/banner/b10.jpg";
 import Footer from "../../components/footer/Footer";
 
-const ProductsData = [
-  { id: 1, title: "Cotton Oxford Shirt", category: "Casual", img: p1, price: 49.99 },
-  { id: 2, title: "Slim Fit Linen Shirt", category: "Casual", img: p2, price: 54.99 },
-  { id: 3, title: "Modern Polo Shirt", category: "Formal", img: p3, price: 39.99 },
-  { id: 4, title: "Classic Dress Shirt", category: "Formal", img: p4, price: 59.99 },
-  { id: 5, title: "Over-Sized Streetwear", category: "New Arrival", img: p5, price: 44.99 },
-  { id: 6, title: "Denim Rugged Shirt", category: "Casual", img: p6, price: 64.99 },
-  { id: 7, title: "Soft Chambray Shirt", category: "Casual", img: p7, price: 49.99 },
-  { id: 8, title: "Printed Summer Shirt", category: "New Arrival", img: p8, price: 34.99 },
-  { id: 9, title: "Premium Silk Blend", category: "Formal", img: n1, price: 89.99 },
-];
+const placeholderImages = [p1, p2, p3, p4, p5, p6, p7, p8, n1];
 
 const Products = () => {
   const { addToCart } = useCart();
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
 
-  const [filteredProducts, setFilteredProducts] = useState(ProductsData);
+  const [productsData, setProductsData] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [categories, setCategories] = useState([{id: "All", name: "All"}]);
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = ["All", "Casual", "Formal", "New Arrival"];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [prodRes, catRes] = await Promise.all([
+          api.get('products/'),
+          api.get('categories/')
+        ]);
+        
+        const fetchedCats = catRes.data.map(c => ({ id: c.id, name: c.name }));
+        setCategories([{id: "All", name: "All"}, ...fetchedCats]);
+
+        const mappedProducts = prodRes.data.map((p, index) => {
+          const categoryObj = catRes.data.find(c => c.id === p.category);
+          
+          // Use the uploaded image, or fallback to a placeholder if it's missing (e.g. for testing)
+          let finalImage = p.image;
+          if (!finalImage) {
+              finalImage = placeholderImages[index % placeholderImages.length];
+          }
+
+          return {
+            id: p.id,
+            title: p.name,
+            category: categoryObj ? categoryObj.name : "Uncategorized",
+            img: finalImage,
+            price: parseFloat(p.price),
+            description: p.description,
+            stock: p.stock
+          };
+        });
+        setProductsData(mappedProducts);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    let result = ProductsData;
+    let result = productsData;
 
     // Filter by Category
     if (activeCategory !== "All") {
@@ -57,7 +86,7 @@ const Products = () => {
     }
 
     setFilteredProducts(result);
-  }, [activeCategory, search]);
+  }, [activeCategory, search, productsData]);
 
   const container = {
     hidden: { opacity: 0 },
@@ -87,11 +116,11 @@ const Products = () => {
         <div className="filter-bar">
           {categories.map((cat) => (
             <button
-              key={cat}
-              className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
-              onClick={() => setActiveCategory(cat)}
+              key={cat.name}
+              className={`filter-btn ${activeCategory === cat.name ? 'active' : ''}`}
+              onClick={() => setActiveCategory(cat.name)}
             >
-              {cat}
+              {cat.name}
             </button>
           ))}
         </div>
