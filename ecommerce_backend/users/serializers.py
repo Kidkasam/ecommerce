@@ -29,7 +29,6 @@ class RegisterSerializer(serializers.ModelSerializer):
             validated_data['username'] = validated_data['email']
         user = User.objects.create_user(**validated_data)
         
-        # Generate OTP
         user.otp = str(random.randint(100000, 999999))
         user.otp_expiry = timezone.now() + timedelta(minutes=5)
         user.save()

@@ -41,7 +41,6 @@ class CreateCheckoutSession(APIView):
         if not order_id:
             return Response({"error": "order_id is required"}, status=status.HTTP_400_BAD_REQUEST)
             
-        # Security: Only let the owner pay for their own order
         order = get_object_or_404(Order, id=order_id, user=request.user)
         
         try:
@@ -69,7 +68,7 @@ class CheckoutView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        # Get user's cart
+   
         try:
             cart = Cart.objects.get(user=request.user)
         except Cart.DoesNotExist:
@@ -79,7 +78,6 @@ class CheckoutView(APIView):
         if not cart_items:
             return Response({"error": "Cart is empty"}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Calculate total price
         total_price = 0
         for item in cart_items:
             total_price += item.product.price * item.quantity
@@ -100,7 +98,7 @@ class CheckoutView(APIView):
                 price=item.product.price
             )
 
-        # Clear Cart
+    
         cart_items.delete()
 
         return Response({
