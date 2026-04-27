@@ -1,16 +1,79 @@
-# React + Vite
+# Full-Stack Ecommerce Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A professional, feature-rich ecommerce application built with a modern tech stack. This project demonstrates a seamless integration between a Django REST Framework backend and a React/Vite frontend.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Authentication**: Secure JWT-based authentication (Login, Register, OTP Verification).
+- **Product Management**: Dynamic product catalog with category-based filtering.
+- **Shopping Cart**: Real-time cart management.
+- **Order System**: Efficient order processing and tracking.
+- **Payment Integration**: Secure transactions powered by Stripe.
+- **Responsive UI**: Modern, responsive design for all screen sizes.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler).
+### Frontend
+- **Framework**: React.js with Vite
+- **Styling**: Vanilla CSS
+- **API Communication**: Axios
+- **State Management**: Context API
 
-## Expanding the ESLint configuration
+### Backend
+- **Framework**: Django & Django REST Framework
+- **Authentication**: SimpleJWT
+- **Payments**: Stripe API
+- **Database**: SQLite (Development)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Installation & Setup
+
+### Prerequisites
+- Node.js & npm
+- Python 3.x
+
+### Backend Setup
+1. Navigate to the backend directory:
+   ```bash
+   cd ecommerce_backend
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate  # On Windows
+   ```
+3. Install dependencies:
+   ```bash
+   pip install django djangorestframework django-cors-headers stripe djangorestframework-simplejwt
+   ```
+4. Run migrations:
+   ```bash
+   python manage.py migrate
+   ```
+5. Start the server:
+   ```bash
+   python manage.py runserver
+   ```
+
+### Frontend Setup
+1. Navigate to the frontend directory:
+   ```bash
+   cd ecommerce_frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## 🔐 Environment Variables
+
+Ensure you have a `.env` file in the `ecommerce_backend` directory with the following:
+- `STRIPE_SECRET_KEY`
+- `DEBUG`
+- `SECRET_KEY`
+
+---
+*Developed as a full-stack portfolio project.*
